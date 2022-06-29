@@ -1,24 +1,15 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="fr.afpa.tptodolist.bo.Todo" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Affichage</title>
 </head>
 <body>
-<%
-    ArrayList<Todo> todos = (ArrayList<Todo>) request.getAttribute("todos");
-%>
 <ul>
-    <%
-        for (Todo todo : todos) {
-    %>
-    <li>
-        <%= todo.getSasie() %>
-    </li>
-    <%
-        }
-    %>
+    <jsp:useBean id="todos" scope="request" type="java.util.List"/>
+    <c:forEach var="todo" items="${todos}">
+        <li>${todo.sasie}</li>
+    </c:forEach>
 </ul>
 </body>
 </html>
